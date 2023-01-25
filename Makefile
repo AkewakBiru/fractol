@@ -6,7 +6,7 @@
 #    By: abiru <abiru@student.42abudhabi.ae>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/15 15:43:55 by abiru             #+#    #+#              #
-#    Updated: 2023/01/19 16:13:07 by abiru            ###   ########.fr        #
+#    Updated: 2023/01/25 19:17:29 by abiru            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS = -Wextra -Werror -Wall
 
-SRCS = loop.c fractol_utils.c
+SRCS = main.c fractol_utils.c ft_atof.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -25,7 +25,7 @@ MLX_DIR = mlx
 all: $(NAME)
 
 %.o: %.c
-	$(CC) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME): $(OBJS)
 	@cd mlx && make
