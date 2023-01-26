@@ -6,7 +6,7 @@
 #    By: abiru <abiru@student.42abudhabi.ae>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/15 15:43:55 by abiru             #+#    #+#              #
-#    Updated: 2023/01/25 19:17:29 by abiru            ###   ########.fr        #
+#    Updated: 2023/01/26 16:53:28 by abiru            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS = -Wextra -Werror -Wall
 
-SRCS = main.c fractol_utils.c ft_atof.c
+SRCS = main.c str_utils.c ft_atof.c close.c fractol_utils.c f_sets.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: abiru <abiru@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:55:10 by abiru             #+#    #+#             */
-/*   Updated: 2023/01/24 23:04:57 by abiru            ###   ########.fr       */
+/*   Updated: 2023/01/26 22:00:45 by abiru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_rng
 	double			max_x;
 	double			min_y;
 	double			max_y;
-	double			scale;
 	unsigned int	color;
 	int				max_iter;
 	int				cur_set;
@@ -43,7 +42,6 @@ typedef struct s_rng
 	double			mpy;
 	double			jx;
 	double			jy;
-	int				j_motion;
 	void			*win;
 	void			*mlx;
 	t_data			img;
@@ -58,5 +56,16 @@ typedef struct s_complex
 size_t	ft_strlen(const char *s);
 int		ft_strcmp(const char *s1, const char *s2);
 double	get_float(const char *str, int start, int sign);
-double	ft_atol(const char *str);
+double	ft_atof(const char *str);
+int		close_win(t_rng *vars);
+void	display_error(char *str);
+void	show_usage(void);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	mandelbrot(t_rng *rng, t_complex *c, int x, int y);
+void	julia(t_rng *rng, t_complex *c, int x, int y);
+void	burning_ship(t_rng *rng, t_complex *c, int x, int y);
+void	renderer(t_rng *rng);
+void	move_julia(int key, t_rng	*rng);
+void	check_input(int ac, char **av, t_rng *rng);
+void	init_mlx(t_rng *rng, char **av);
 #endif

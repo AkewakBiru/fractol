@@ -5,35 +5,88 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abiru <abiru@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 16:07:41 by abiru             #+#    #+#             */
-/*   Updated: 2023/01/24 23:03:22 by abiru            ###   ########.fr       */
+/*   Created: 2023/01/26 14:30:14 by abiru             #+#    #+#             */
+/*   Updated: 2023/01/26 22:00:31 by abiru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-size_t	ft_strlen(const char *s)
+void	validate_julia(int ac, char **av, t_rng *rng)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (ac != 4)
+		display_error("Usage: ./fractol julia [pos_x] [pos_y]\n");
+	if ((int)ft_atof(av[2]) == 3)
+		display_error("Allowed range is between (-1, 1)\n");
+	else if (av[2])
+		rng->jx = ft_atof(av[2]);
+	if ((int)ft_atof(av[3]) == 3)
+		display_error("Allowed range is between (-1, 1)\n");
+	else if (av[3])
+		rng->jy = ft_atof(av[3]);
+	rng->cur_set = 2;
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
+void	check_input(int ac, char **av, t_rng *rng)
 {
-	size_t	i;
-
-	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0'))
+	if (ac < 2 || ac > 4)
+		show_usage();
+	if (ft_strcmp(av[1], "mandelbrot") == 0)
 	{
-		if (s1[i] > s2[i])
-			return ((unsigned char )s1[i] - (unsigned char )s2[i]);
-		else if (s1[i] < s2[i])
-			return ((unsigned char )s1[i] - (unsigned char )s2[i]);
-		i++;
+		if (ac != 2)
+			display_error("mandelbrot set needs 1 argument only\n");
+		rng->cur_set = 1;
 	}
-	return (0);
+	else if (ft_strcmp(av[1], "julia") == 0)
+		validate_julia(ac, av, rng);
+	else if (ft_strcmp(av[1], "burning ship") == 0)
+	{
+		if (ac != 2)
+			display_error("burning ship needs 1 argument only\n");
+		rng->cur_set = 3;
+	}
+	else
+		show_usage();
+}
+
+void	move_julia(int key, t_rng	*rng)
+{
+	if (key == 13)
+	{
+		if (rng->jy >= -1)
+			rng->jy -= 0.01;
+	}
+	else if (key == 0)
+	{
+		if (rng->jx >= -1)
+			rng->jx -= 0.01;
+	}
+	else if (key == 1)
+	{
+		if (rng->jy <= 1)
+			rng->jy += 0.01;
+	}
+	else if (key == 2)
+	{
+		if (rng->jx <= 1)
+			rng->jx += 0.01;
+	}
+	renderer(rng);
+}
+
+void	init_mlx(t_rng *rng, char **av)
+{
+	rng->mlx = mlx_init();
+	if (!rng->mlx)
+		exit(1);
+	rng->win = mlx_new_window(rng->mlx, WIDTH, HEIGHT, av[1]);
+	if (!rng->win)
+		exit(1);
+	rng->img.img = mlx_new_image(rng->mlx, WIDTH, HEIGHT);
+	if (!rng->img.img)
+		close_win(rng);
+	rng->img.addr = mlx_get_data_addr(rng->img.img, &(rng->img.bits_per_pixel),
+			&(rng->img.line_length), &(rng->img.endian));
+	if (!rng->img.addr)
+		close_win(rng);
 }

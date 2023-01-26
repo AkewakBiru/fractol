@@ -6,7 +6,7 @@
 /*   By: abiru <abiru@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:56:21 by abiru             #+#    #+#             */
-/*   Updated: 2023/01/24 22:57:11 by abiru            ###   ########.fr       */
+/*   Updated: 2023/01/26 21:28:19 by abiru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ double	get_float(const char *str, int start, int sign)
 	return (sign * (res / 1000000));
 }
 
-double	ft_atol(char *str)
+double	ft_atof(char *str)
 {
 	int	result;
 	int	i;
