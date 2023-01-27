@@ -6,7 +6,7 @@
 /*   By: abiru <abiru@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:55:10 by abiru             #+#    #+#             */
-/*   Updated: 2023/01/26 22:00:45 by abiru            ###   ########.fr       */
+/*   Updated: 2023/01/27 13:41:30 by abiru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,5 @@ void	renderer(t_rng *rng);
 void	move_julia(int key, t_rng	*rng);
 void	check_input(int ac, char **av, t_rng *rng);
 void	init_mlx(t_rng *rng, char **av);
+void	init_corner(t_rng *rng);
 #endif

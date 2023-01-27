@@ -6,7 +6,7 @@
 /*   By: abiru <abiru@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:30:14 by abiru             #+#    #+#             */
-/*   Updated: 2023/01/26 22:00:31 by abiru            ###   ########.fr       */
+/*   Updated: 2023/01/27 13:41:15 by abiru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,28 @@ void	init_mlx(t_rng *rng, char **av)
 			&(rng->img.line_length), &(rng->img.endian));
 	if (!rng->img.addr)
 		close_win(rng);
+}
+
+void	init_corner(t_rng *rng)
+{
+	if (rng->cur_set == 1)
+	{
+		rng->min_x = -2.4;
+		rng->max_x = 1.8;
+		rng->min_y = -2.0;
+	}
+	else if (rng->cur_set == 2)
+	{
+		rng->min_x = -2.5;
+		rng->max_x = 2;
+		rng->min_y = -2;
+	}
+	else if (rng->cur_set == 3)
+	{
+		rng->min_x = -2;
+		rng->max_x = 2;
+		rng->min_y = -1.8;
+	}
+	rng->max_y = rng->min_y + (rng->max_x - rng->min_x) * (HEIGHT) / (WIDTH);
+	return ;
 }

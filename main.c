@@ -6,7 +6,7 @@
 /*   By: abiru <abiru@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:55:00 by abiru             #+#    #+#             */
-/*   Updated: 2023/01/26 22:01:16 by abiru            ###   ########.fr       */
+/*   Updated: 2023/01/27 13:41:04 by abiru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,7 @@ int	main(int ac, char **av)
 	t_rng	rng;
 
 	check_input(ac, av, &rng);
-	rng.min_x = -2;
-	rng.max_x = 1.5;
-	rng.min_y = -2.0;
-	rng.max_y = rng.min_y + (rng.max_x - rng.min_x) * (HEIGHT) / (WIDTH);
+	init_corner(&rng);
 	rng.max_iter = 300;
 	rng.color = 0x160C1D;
 	init_mlx(&rng, av);
