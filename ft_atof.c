@@ -6,11 +6,9 @@
 /*   By: abiru <abiru@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:56:21 by abiru             #+#    #+#             */
-/*   Updated: 2023/01/26 21:28:19 by abiru            ###   ########.fr       */
+/*   Updated: 2023/01/27 13:58:05 by abiru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 static int	skip_spaces(const char *str)
 {
