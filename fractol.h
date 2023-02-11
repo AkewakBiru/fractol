@@ -6,14 +6,14 @@
 /*   By: abiru <abiru@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:55:10 by abiru             #+#    #+#             */
-/*   Updated: 2023/01/27 13:41:30 by abiru            ###   ########.fr       */
+/*   Updated: 2023/02/11 17:12:57 by abiru            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 100
+# define HEIGHT 100
 # include "mlx/mlx.h"
 # include <stdlib.h>
 # include <math.h>
